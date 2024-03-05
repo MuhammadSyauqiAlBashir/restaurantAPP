@@ -8,7 +8,13 @@ function Card({ item, getDetail }) {
           getDetail(item);
         }}
       >
-        <div className="card" style={{ height: "35rem" }}>
+        <div
+          data-aos="zoom-in-up"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          className="card"
+          style={{ height: "35rem" }}
+        >
           <img
             src={item.imgUrl}
             style={{ height: "12rem", objectFit: "cover" }}
