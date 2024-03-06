@@ -3,7 +3,7 @@ function Navbar() {
   <nav className="navbar bg-dark border-bottom border-body fixed-top" data-bs-theme="dark">
     <div className="container ">
       <a className="navbar-brand" href="">
-      Indonesian Traditional Restaurant
+        Indonesian Traditional Restaurant
       </a>
       <button
         className="navbar-toggler"

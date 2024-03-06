@@ -21,7 +21,6 @@ function App() {
   useEffect(() => {FetchData()}, [])
   return (
     <>
-    <Navbar/>
     <PubCuisine state={state}/>
     </>
   )

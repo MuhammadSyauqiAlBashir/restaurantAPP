@@ -1,6 +1,6 @@
 function Carousel() {
   return (
-    <div id="carouselExampleIndicators" className="carousel slide">
+    <div id="carouselExampleIndicators" className="carousel slide container">
       <div className="carousel-indicators">
         <button
           type="button"
@@ -28,7 +28,7 @@ function Carousel() {
           <img src="https://e0.pxfuel.com/wallpapers/710/662/desktop-wallpaper-restaurant-restaurant-for-your-mobile-tablet-explore-widescreen-high-resolution-widescreen.jpg" className="d-block w-100" alt="" />
         </div>
         <div className="carousel-item">
-          <img src="https://wallpaperbat.com/img/729584-restaurants-wallpaper-top-free-restaurants-background.jpg" className="d-block w-100" alt="" />
+          <img src="https://images.pexels.com/photos/2403392/pexels-photo-2403392.jpeg?cs=srgb&dl=pexels-yente-van-eynde-2403392.jpg&fm=jpg" className="d-block w-100" alt="" />
         </div>
         <div className="carousel-item">
           <img src="https://wallpaperbat.com/img/729660-restaurant-food-architecture-interior-design-room-wallpaper-hd-desktop-and-mobile-background.jpg" className="d-block w-100" alt="" />
