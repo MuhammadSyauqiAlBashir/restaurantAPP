@@ -1,21 +1,28 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/navbar'
 import data from "../../testcuisine.json"
-import HomePage from './pages/HomePage'
+import PubCuisine from './pages/PubCuisine'
+import axios from 'axios'
 
 function App() {
-  console.log(data);
-  const [count, setCount] = useState(0)
-  const [singleData, setSingleData] = useState(null);
-  function getDetail(item) {
-    setSingleData(item);
+  const [state, setState] = useState([])
+  async function FetchData(){
+    try {
+      const {data} = await axios({
+        method: "get",
+        url : "https://bismillah.watersnj.com/pub/cuisine"
+      })
+      setState(data.data)
+    } catch (error) {
+      console.log(error);
+    }
   }
-
+  useEffect(() => {FetchData()}, [])
   return (
     <>
     <Navbar/>
-    <HomePage data={data} getDetail={getDetail} />
+    <PubCuisine state={state}/>
     </>
   )
 }

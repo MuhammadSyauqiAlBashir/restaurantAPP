@@ -1,4 +1,4 @@
-function Card({ item, getDetail }) {
+function Card({ item }) {
   return (
     <>
       <div
@@ -11,7 +11,7 @@ function Card({ item, getDetail }) {
         <div
           data-aos="zoom-in-up"
           data-aos-easing="ease-out-cubic"
-          data-aos-duration="2000"
+          data-aos-duration="800"
           className="card"
           style={{ height: "35rem" }}
         >
