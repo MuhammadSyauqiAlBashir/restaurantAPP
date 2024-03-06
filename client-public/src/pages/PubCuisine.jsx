@@ -8,7 +8,7 @@ function PubCuisine({ state }) {
   console.log(state, "<<<<");
   return (
     <>
-    <div className="container my-5" style={{backgroundImage: 'url("https://wallsbyme.com/cdn/shop/products/textured_98367550_01-sw_500x.jpg?v=1628704626")', backgroundRepeat:"repeat"}}>
+    <div className="container my-5">
     <Navbar/>
     <Carousel/>
     <div className="container my-5">
