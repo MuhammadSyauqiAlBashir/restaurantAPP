@@ -9,6 +9,7 @@ import SearchBar from "../components/searchbar";
 function PubCuisine() {
   const [state, setState] = useState({ data: [] });
   const [params, setParams] = useState({});
+  const [category, setCategory] = useState([])
   function handleInputChange(event) {
     const { value } = event.target;
     find(value);
@@ -16,6 +17,14 @@ function PubCuisine() {
   function handleInputSort(event) {
     const { value } = event.target;
     sort(value);
+  }
+  function handleInputFilter(event){
+    const { value } = event.target;
+    filter(value);
+  }
+  function filter(value){
+    // if (value !== "") 
+    setParams({...params, "filter" : value})
   }
   function sort(value){
     if (value === 1) {
@@ -30,11 +39,25 @@ function PubCuisine() {
   function handlingPage(number) {
     setParams({ ...params, "page[number]": number });
   }
+  async function FetchDataCategory(){
+    try {
+      const {data} = await axios({
+        method : "get",
+        url : `${BASE_URL}/category`
+      })
+      setCategory(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    FetchDataCategory()
+  }, [])
   async function FetchData() {
     try {
       const { data } = await axios({
         method: "get",
-        url: `${BASE_URL}`,
+        url: `${BASE_URL}/cuisine`,
         params: params,
       });
       setState(data);
@@ -69,6 +92,20 @@ function PubCuisine() {
               <option value="2">Latest</option>
             </select>
             <label htmlFor="floatingSelect">Sort By :</label>
+          </div>
+          <div className="form-floating mb-3">
+            <select
+              className="form-select"
+              id="floatingSelect"
+              aria-label="Floating label select example"
+              onChange={handleInputFilter}
+            >
+              <option value={""}>Show All</option>
+              {category.map((item, index) => {
+                return <option value={item.id} key={index}>{item.name}</option>
+              })}
+            </select>
+            <label htmlFor="floatingSelect">Filter By Category :</label>
           </div>
           <div className="row row-cols-4 g-3">
             {state.data.map((item) => (

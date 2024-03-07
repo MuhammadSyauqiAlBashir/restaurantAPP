@@ -9,7 +9,7 @@ function DetailCuisine() {
   useEffect(() => {
     const FetchData = async () => {
       try {
-        const { data } = await axios(`${BASE_URL}/${id}`);
+        const { data } = await axios(`${BASE_URL}/cuisine/${id}`);
         setData(data);
       } catch (error) {
         console.log(error);
