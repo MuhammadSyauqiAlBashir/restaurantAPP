@@ -1,29 +1,27 @@
-import { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/navbar'
-import data from "../../testcuisine.json"
+import DetailCuisine from './pages/DetailCuisine';
 import PubCuisine from './pages/PubCuisine'
-import axios from 'axios'
+import {
+  createBrowserRouter,
+  RouterProvider, redirect
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <PubCuisine />,
+  },
+  {
+    path: "/detail/:id",
+    element: <DetailCuisine />,
+  },
+
+]);
 
 function App() {
-  const [state, setState] = useState([])
-  async function FetchData(){
-    try {
-      const {data} = await axios({
-        method: "get",
-        url : "https://bismillah.watersnj.com/pub/cuisine"
-      })
-      setState(data.data)
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  useEffect(() => {FetchData()}, [])
-  return (
-    <>
-    <PubCuisine state={state}/>
-    </>
-  )
+  return <RouterProvider router={router} />
+
 }
 
 export default App

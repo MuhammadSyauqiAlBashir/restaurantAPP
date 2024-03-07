@@ -1,11 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 function Card({ item }) {
+  const navigate = useNavigate()
   return (
     <>
       <div
         className="col"
         style={{ cursor: "pointer" }}
         onClick={() => {
-          getDetail(item);
+          navigate(`/detail/${item.id}`)
         }}
       >
         <div
@@ -13,7 +16,6 @@ function Card({ item }) {
           data-aos-easing="ease-out-cubic"
           data-aos-duration="800"
           className="card"
-          style={{ height: "35rem" }}
         >
           <img
             src={item.imgUrl}
@@ -22,8 +24,12 @@ function Card({ item }) {
           />
           <div className="card-body">
             <h5 className="card-title">{item.name}</h5>
-            <p className="card-text">{item.description}</p>
-            <p>{item.price}</p>
+            <p>
+              {new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              }).format(item.price)}
+            </p>
           </div>
         </div>
       </div>
