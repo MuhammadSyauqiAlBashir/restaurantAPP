@@ -1,5 +1,6 @@
 import './App.css'
 import Navbar from './components/navbar'
+import Test from './components/test';
 import DetailCuisine from './pages/DetailCuisine';
 import PubCuisine from './pages/PubCuisine'
 import {
@@ -15,7 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/detail/:id",
     element: <DetailCuisine />,
-  },
+  },{
+    path: "/test",
+    element : <Test/>
+  }
 
 ]);
 

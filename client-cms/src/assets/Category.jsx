@@ -14,33 +14,38 @@ function Category() {
         },
       });
       console.log(data);
-      setData(data)
+      setData(data);
     } catch (error) {
       console.log(error);
     }
   }
   useEffect(() => {
-      FetchDataCategory();
+    FetchDataCategory();
   }, []);
   return (
-    <table className="table align-middle table-striped container">
-      <thead>
-        <tr>
-          <th scope="col">No</th>
-          <th scope="col">Name</th>
-        </tr>
-      </thead>
-      <tbody>
-        {data.map((item, index) => {
-          return (
-            <tr key={index}>
-              <th scope="row">{index + 1}</th>
-              <td>{item.name}</td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <div className="position-absolute top-50 start-50 translate-middle">
+      <table
+        className="table table-dark  align-middle container flex-column"
+        style={{ marginLeft: 210, width: 700 }}
+      >
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => {
+            return (
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
+                <td>{item.name}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
 

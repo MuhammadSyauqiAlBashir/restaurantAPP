@@ -15,14 +15,14 @@ function Card({ item }) {
           data-aos="zoom-in-up"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="800"
-          className="card"
+          className="card text-light bg-transparent"
         >
           <img
             src={item.imgUrl}
             style={{ height: "12rem", objectFit: "cover" }}
             alt=""
           />
-          <div className="card-body">
+          <div className="card-body" style={{backgroundColor: "rgba(115, 115, 115, 0.5)"}}>
             <h5 className="card-title">{item.name}</h5>
             <p>
               {new Intl.NumberFormat("id-ID", {

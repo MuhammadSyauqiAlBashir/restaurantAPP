@@ -73,7 +73,7 @@ function Home() {
       });
     } catch (error) {
       Swal.fire({
-        title: error.response.data[0],
+        title: error.response.data[0  ],
         icon: "error",
       });
     }
@@ -189,11 +189,11 @@ function Home() {
   }
   return (
     <>
-      <div className="container d-flex flex-column" style={{marginLeft:210}}>
+      <div className="container d-flex flex-column" style={{marginLeft:210, marginTop:100}}>
         <button
           style={{ width: 200}}
           type="button"
-          className="btn btn-primary"
+          className="btn btn-primary mb-4"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
           onClick={() => clearEdit()}
