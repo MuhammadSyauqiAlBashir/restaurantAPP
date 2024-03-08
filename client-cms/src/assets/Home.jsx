@@ -52,7 +52,7 @@ function Home() {
     try {
       let config = {
         method: "post",
-        url: "https://bismillah.watersnj.com/cuisine",
+        url: `${BASE_URL}cuisine`,
         headers: {
           Authorization: `Bearer ` + localStorage.accessToken,
         },
@@ -72,9 +72,8 @@ function Home() {
         categoryId: "",
       });
     } catch (error) {
-      console.log(error);
       Swal.fire({
-        title: error,
+        title: error.response.data[0],
         icon: "error",
       });
     }
@@ -97,6 +96,7 @@ function Home() {
         categoryId: data.categoryId,
       });
     } catch (error) {
+        console.log(error);
       Swal.fire({
         title: error.response.data.message,
         icon: "error",
@@ -179,17 +179,21 @@ function Home() {
   };
   if (loading) {
     return (
-        <div className="spinner-border text-info container d-flex justify-content-center align-items-center" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
+      <div
+        className="spinner-border text-info container d-flex justify-content-center align-items-center"
+        role="status"
+      >
+        <span className="sr-only">Loading...</span>
+      </div>
     );
   }
   return (
     <>
-      <div className="container">
+      <div className="container d-flex flex-column" style={{marginLeft:210}}>
         <button
+          style={{ width: 200}}
           type="button"
-          className="btn btn-primary mt-3"
+          className="btn btn-primary"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
           onClick={() => clearEdit()}

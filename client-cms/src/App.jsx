@@ -7,6 +7,8 @@ import {
 import Login from './assets/login';
 import Home from './assets/Home';
 import MainLayout from './assets/MainLayout';
+import Category from './assets/Category';
+import AddUser from './assets/AddUser';
 
 
 function App() {
@@ -24,6 +26,14 @@ function App() {
           path : "/",
           element: <Home />
         },
+        {
+          path : "/categories",
+          element: <Category />
+        },
+        {
+          path : "/addstaff",
+          element : <AddUser />
+        }
       ]
     },
     {

@@ -1,7 +1,7 @@
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary" >
+      <div className="container-fluid" style={{backgroundColor:"pink"}}>
         <a className="navbar-brand" href="#">
           Navbar
         </a>
