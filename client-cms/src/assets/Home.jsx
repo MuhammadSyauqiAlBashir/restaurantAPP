@@ -3,10 +3,11 @@ import { useEffect, useState } from "react";
 import BASE_URL from "../constant";
 import Swal from "sweetalert2";
 import { redirect, useNavigate } from "react-router-dom";
-import ModalFormAdd from "./ModalFormAdd";
+import ModalFormAddEdit from "./ModalFormAddEdit";
 
 function Home() {
   const navigate = useNavigate();
+  const [edit, setEdit] = useState(0);
   const [input, setInput] = useState({
     name: "",
     description: "",
@@ -14,6 +15,27 @@ function Home() {
     imgUrl: "",
     categoryId: "",
   });
+  function clearEdit() {
+    setEdit(0);
+  }
+  const [deletecuisineparams, setDeletecuisine] = useState(0)
+  async function deleteCuisine(){
+    try {
+        const { data } = await axios({
+            method: "delete",
+            url: `${BASE_URL}cuisine/${deletecuisineparams}`,
+            headers: {
+              Authorization: `Bearer ` + localStorage.accessToken,
+            },
+        });
+        FetchData()
+    } catch (error) {
+        console.log(error);
+    }
+  }
+  useEffect(()=>{
+    deleteCuisine()
+  }, [deletecuisineparams])
   function handleChange(event) {
     const { name, value } = event.target;
     const newInput = {
@@ -24,24 +46,67 @@ function Home() {
   }
   const [add, setAdd] = useState("");
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
     try {
-      const { data } = await axios({
-        method: "post",
-        url: "https://bismillah.watersnj.com/cuisine",
-        headers: {
-          Authorization: `Bearer ` + localStorage.accessToken,
-        },
-        data: input,
-      });
+        let config = {
+            method: "post",
+            url: "https://bismillah.watersnj.com/cuisine",
+            headers: {
+              Authorization: `Bearer ` + localStorage.accessToken,
+            },
+            data: input,
+        }
+        if(edit !== 0) {
+            config.method = "put",
+            config.url = "https://bismillah.watersnj.com/cuisine/" + edit
+        }
+      const { data } = await axios(config);
       setAdd("done");
+      setInput({
+        name: "",
+        description: "",
+        price: "",
+        imgUrl: "",
+        categoryId: "",
+      });
     } catch (error) {
+      console.log(error);
       Swal.fire({
         title: error,
         icon: "error",
       });
     }
   };
+  const [data1, setData1] = useState([]);
+  async function FetchDataEdit() {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `${BASE_URL}cuisine/${edit}`,
+        headers: {
+          Authorization: `Bearer ` + localStorage.accessToken,
+        },
+      });
+      setInput({
+        name: data.name,
+        description: data.description,
+        price: data.price,
+        imgUrl: data.imgUrl,
+        categoryId: data.categoryId,
+      });
+    } catch (error) {
+      Swal.fire({
+        title: error.response.data.message,
+        icon: "error",
+      });
+      navigate("/login");
+    }
+  }
+  useEffect(() => {
+    if (edit > 0) {
+      FetchDataEdit();
+    }
+  }, [edit]);
   const [data, setData] = useState([]);
   const [category, setCategory] = useState([]);
   async function FetchDataCategory() {
@@ -90,6 +155,7 @@ function Home() {
           className="btn btn-primary mt-3"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
+          onClick={() => clearEdit()}
         >
           Add Cuisine
         </button>
@@ -102,10 +168,12 @@ function Home() {
           aria-labelledby="staticBackdropLabel"
           aria-hidden="true"
         >
-          <ModalFormAdd
+          <ModalFormAddEdit
             handleChange={handleChange}
             handleSubmit={handleSubmit}
             category={category}
+            edit={edit}
+            input={input}
           />
         </div>
 
@@ -145,7 +213,24 @@ function Home() {
                   <td>{item.User.email}</td>
                   <td>{item.Category.name}</td>
                   <td>
-                    <button className="btn btn-warning">Edit</button>
+                    <button
+                      type="button"
+                      className="btn btn-warning mt-3"
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                      onClick={() => {
+                        setEdit(item.id);
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button 
+                    className="btn btn-danger mt-3 ms-3"
+                    onClick={() => {
+                        setDeletecuisine(item.id)
+                    }}
+                    >Delete</button>
+                    <button className="btn btn-primary mt-3 ms-2">Change Image</button>
                   </td>
                 </tr>
               );

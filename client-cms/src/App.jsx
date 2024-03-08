@@ -28,7 +28,13 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />
+      element: <Login />,
+      loader : () => {
+        if(localStorage.accessToken){
+          return redirect('/')
+        }
+        return null
+      },
     },
   ]);
 

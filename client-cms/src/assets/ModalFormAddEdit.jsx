@@ -1,11 +1,11 @@
-function ModalFormAdd({ handleChange, handleSubmit, category }) {
+function ModalFormAddEdit({ handleChange, handleSubmit, category, edit, input }) {
   return (
     <>
       <div className="modal-dialog">
         <div className="modal-content" style={{ width: "600px" }}>
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="staticBackdropLabel">
-              Modal title
+              {edit === 0 ? "Add Cuisine" : "Edit Cuisine"}
             </h1>
             <button
               type="button"
@@ -14,7 +14,6 @@ function ModalFormAdd({ handleChange, handleSubmit, category }) {
               aria-label="Close"
             />
           </div>
-
           <div className="modal-body">
             <form onSubmit={handleSubmit}>
               <div className="row mb-3">
@@ -27,6 +26,7 @@ function ModalFormAdd({ handleChange, handleSubmit, category }) {
                 <div className="col-sm-9">
                   <input
                     type="text"
+                    value={input.name}
                     name="name"
                     className="form-control"
                     id="inputEmail3"
@@ -45,6 +45,7 @@ function ModalFormAdd({ handleChange, handleSubmit, category }) {
                   <textarea
                     className="form-control"
                     id="inputPassword3"
+                    value={input.description}
                     name="description"
                     onChange={handleChange}
                   />
@@ -61,6 +62,7 @@ function ModalFormAdd({ handleChange, handleSubmit, category }) {
                   <input
                     type="number"
                     className="form-control"
+                    value={input.price}
                     id="inputPassword3"
                     name="price"
                     onChange={handleChange}
@@ -79,6 +81,7 @@ function ModalFormAdd({ handleChange, handleSubmit, category }) {
                     type="text"
                     className="form-control"
                     id="inputPassword3"
+                    value={input.imgUrl}
                     name="imgUrl"
                     onChange={handleChange}
                   />
@@ -95,7 +98,7 @@ function ModalFormAdd({ handleChange, handleSubmit, category }) {
                   <option value="">Open this select Category</option>
                   {category.map((item, index) => {
                     return (
-                      <option key={index} value={item.id}>
+                      <option defaultValue={input.categoryId === item.id} key={index} value={item.id}>
                         {item.name}
                       </option>
                     );
@@ -106,6 +109,7 @@ function ModalFormAdd({ handleChange, handleSubmit, category }) {
               <button
                 type="submit"
                 className="btn btn-primary mt-3"
+                style={{marginLeft:"220px"}}
                 data-bs-dismiss="modal"
               >
                 Submit Add
@@ -127,4 +131,4 @@ function ModalFormAdd({ handleChange, handleSubmit, category }) {
   );
 }
 
-export default ModalFormAdd;
+export default ModalFormAddEdit;

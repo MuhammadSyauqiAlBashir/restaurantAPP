@@ -27,6 +27,12 @@ function Login() {
                 data : input
             })
             localStorage.accessToken= data.newToken
+            Swal.fire({
+                title : "Success",
+                icon : "success",
+                timer : 2000,
+                showConfirmButton: false
+            })
             navigate('/')
         } catch (error) {
             Swal.fire({
