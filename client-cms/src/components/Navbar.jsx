@@ -9,8 +9,8 @@ function Navbar() {
   }
   return (
     <nav
-      className="fixed-top navbar navbar-expand-lg bg-secondary-subtle"
-      style={{ marginLeft: 200, height: 68 }}
+      className="fixed-top navbar navbar-expand-lg"
+      style={{ marginLeft: 200, height: 68, backgroundColor:"white" }}
     >
       <div className="container-fluid">
         <a
@@ -33,8 +33,9 @@ function Navbar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="d-flex justify-content-center navbar-nav me-auto mb-2 mb-lg-0">
             <img
-              style={{ width: 70 }}
-              src="https://res-console.cloudinary.com/dep5hbgsn/media_explorer_thumbnails/ce5950f444e734ab627c9a94560a7e2b/detailed"
+              style={{ height: 50 }}
+              src="https://logowik.com/content/uploads/images/restaurant9491.logowik.com.webp"
+              alt="logo"
             />
           </ul>
         </div>

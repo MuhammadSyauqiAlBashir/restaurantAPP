@@ -42,12 +42,12 @@ function Login() {
         }
     }
   return (
-    <section style={{height : "100vh", backgroundColor : "pink", alignItems :"space-between", display: "flex", flexDirection: "column"}}>
+    <section style={{height : "100vh", backgroundColor : "white", alignItems :"space-between", display: "flex", flexDirection: "column"}}>
       <div className="container-fluid h-custom" style={{flexGrow:1}}>
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-md-9 col-lg-6 col-xl-5 p-5">
             <img
-              src="https://res-console.cloudinary.com/dep5hbgsn/media_explorer_thumbnails/ce5950f444e734ab627c9a94560a7e2b/detailed"
+              src="https://logowik.com/content/uploads/images/restaurant9491.logowik.com.webp"
               className="img-fluid"
               style={{marginLeft:80}}
               alt="Sample image"

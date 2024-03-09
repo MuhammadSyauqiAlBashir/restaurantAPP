@@ -23,10 +23,17 @@ function Category() {
     FetchDataCategory();
   }, []);
   return (
-    <div className="position-absolute top-50 start-50 translate-middle">
+    <div
+        className="text-light position-absolute top-50 start-50 translate-middle"
+        style={{
+          backgroundColor: "rgba(115, 115, 115, 0.5)",
+          height: 500,
+          width: 900,
+        }}
+      >
       <table
-        className="table table-dark  align-middle container flex-column"
-        style={{ marginLeft: 210, width: 700 }}
+        className="table table-dark table-hover align-middle container flex-column position-absolute top-50 start-50 translate-middle"
+        style={{ width: 700 }}
       >
         <thead>
           <tr>

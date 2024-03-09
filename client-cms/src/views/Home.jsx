@@ -177,6 +177,7 @@ function Home() {
         },
         data: formData,
       });
+      setCurrentImage(null)
       if(!data) throw error.response.data.message = "Please input file" 
     } catch (error) {
       console.log(error);
@@ -185,14 +186,16 @@ function Home() {
         icon: "error"
       })
     } finally {
+      FetchData()
       setLoading(false);
     }
   };
   if (loading) {
     return (
       <div
-        className="spinner-border text-info container d-flex justify-content-center align-items-center"
+        className="spinner-border text-info container d-flex align-items-center fixed-top"
         role="status"
+        style={{marginTop:300}}
       >
         <span className="sr-only">Loading...</span>
       </div>
