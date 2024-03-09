@@ -33,6 +33,12 @@ function Home() {
       FetchData();
     } catch (error) {
       console.log(error);
+      Swal.fire({
+        title: error.response.data.message,
+        icon: error,
+        timer: 1000,
+        showConfirmButton: false,
+      });
     }
   }
   useEffect(() => {
@@ -71,14 +77,14 @@ function Home() {
         imgUrl: "",
         categoryId: "",
       });
-      FetchData()
+      FetchData();
     } catch (error) {
       console.log(error);
-      if(error.response.data.message){
+      if (error.response.data.message) {
         Swal.fire({
-          title : error.response.data.message
-        })
-      }else{
+          title: error.response.data.message,
+        });
+      } else {
         Swal.fire({
           title: error.response.data[0],
           icon: "error",
@@ -103,7 +109,7 @@ function Home() {
         categoryId: data.categoryId,
       });
     } catch (error) {
-        console.log(error);
+      console.log(error);
       Swal.fire({
         title: error.response.data.message,
         icon: "error",
@@ -177,16 +183,16 @@ function Home() {
         },
         data: formData,
       });
-      setCurrentImage(null)
-      if(!data) throw error.response.data.message = "Please input file" 
+      setCurrentImage(null);
+      if (!data) throw (error.response.data.message = "Please input file");
     } catch (error) {
       console.log(error);
       Swal.fire({
         title: error.response.data.message,
-        icon: "error"
-      })
+        icon: "error",
+      });
     } finally {
-      FetchData()
+      FetchData();
       setLoading(false);
     }
   };
@@ -195,7 +201,7 @@ function Home() {
       <div
         className="spinner-border text-info container d-flex align-items-center fixed-top"
         role="status"
-        style={{marginTop:300}}
+        style={{ marginTop: 300 }}
       >
         <span className="sr-only">Loading...</span>
       </div>
@@ -203,20 +209,25 @@ function Home() {
   }
   return (
     <>
-      <div className="container d-flex flex-column" style={{marginLeft:210, marginTop:100}}>
+      <div
+        className="container d-flex flex-column"
+        style={{ marginLeft: 210, marginTop: 100 }}
+      >
         <button
-          style={{ width: 250}}
+          style={{ width: 250 }}
           type="button"
           className="btn btn-secondary mb-4"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
           onClick={() => {
-            clearEdit()
-            setInput({name: "",
-            description: "",
-            price: "",
-            imgUrl: "",
-            categoryId: "",})
+            clearEdit();
+            setInput({
+              name: "",
+              description: "",
+              price: "",
+              imgUrl: "",
+              categoryId: "",
+            });
           }}
         >
           Add Cuisine
@@ -282,7 +293,7 @@ function Home() {
                       data-bs-target="#staticBackdrop"
                       onClick={() => {
                         setEdit(item.id);
-                        if(edit !== 0) FetchDataEdit()
+                        if (edit !== 0) FetchDataEdit();
                       }}
                     >
                       Edit

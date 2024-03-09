@@ -40,10 +40,17 @@ function AddUser() {
       });
       navigate("/");
     } catch (error) {
-      Swal.fire({
-        title: error.response.data[0],
-        icon: "error",
-      });
+      if (error.response.data.message) {
+        Swal.fire({
+          title: error.response.data.message,
+          icon: "error"
+        });
+      }else{
+        Swal.fire({
+          title: error.response.data[0],
+          icon: "error",
+        });
+      }
     }
   }
   useEffect(() => {}, []);

@@ -2,3 +2,9 @@
 # P2-Challenge-2 (Client Side)
 
 > Tuliskan API Docs kamu di sini
+
+>Link Admin / Client - cms
+https://admin.restaurantindohck.watersnj.com/
+
+>Link Public/ Client-public
+https://restaurantindonesiahck.watersnj.com/
