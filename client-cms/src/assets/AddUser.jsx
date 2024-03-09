@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import BASE_URL from "../constant";
 import Swal from "sweetalert2";
 import { redirect, useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 function AddUser() {
   const navigate = useNavigate();
@@ -48,9 +49,22 @@ function AddUser() {
   useEffect(() => {}, []);
   return (
     <>
-      <div className="text-light position-absolute top-50 start-50 translate-middle" style={{backgroundColor: "rgba(115, 115, 115, 0.5)", height:500, width:900}}>
-        <form onSubmit={submitData} style={{width:500}} className="position-absolute top-50 start-50 translate-middle">
-          <h1 style={{marginLeft:35}}className="mb-4">Add Staff (Admin Only)</h1>
+      <div
+        className="text-light position-absolute top-50 start-50 translate-middle"
+        style={{
+          backgroundColor: "rgba(115, 115, 115, 0.5)",
+          height: 500,
+          width: 900,
+        }}
+      >
+        <form
+          onSubmit={submitData}
+          style={{ width: 500 }}
+          className="position-absolute top-50 start-50 translate-middle"
+        >
+          <h1 style={{ marginLeft: 35 }} className="mb-4">
+            Add Staff (Admin Only)
+          </h1>
           <div className="row mb-3">
             <label htmlFor="inputEmail3" className="col-sm-3 col-form-label">
               Email
@@ -107,9 +121,7 @@ function AddUser() {
               />
             </div>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+          <Button ButtonType={"Submit"} />
         </form>
       </div>
     </>

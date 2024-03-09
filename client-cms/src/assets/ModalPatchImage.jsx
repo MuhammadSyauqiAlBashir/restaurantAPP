@@ -1,4 +1,6 @@
-function PatchDataImage({HandleImageChange, HandlePatchImage}) {
+import Button from "./Button";
+
+function PatchDataImage({ HandleImageChange, HandlePatchImage }) {
   return (
     <>
       <div className="modal-dialog">
@@ -26,14 +28,7 @@ function PatchDataImage({HandleImageChange, HandlePatchImage}) {
                 name="photo"
                 onChange={HandleImageChange}
               />
-              <button
-                type="submit"
-                className="btn btn-primary mt-3"
-                style={{marginLeft:"220px"}}
-                data-bs-dismiss="modal"
-              >
-                Upload Image
-              </button>
+              <Button ButtonType={"submit"}/>
             </form>
           </div>
           <div className="modal-footer">

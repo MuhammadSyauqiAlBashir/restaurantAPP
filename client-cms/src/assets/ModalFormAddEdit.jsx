@@ -1,4 +1,12 @@
-function ModalFormAddEdit({ handleChange, handleSubmit, category, edit, input }) {
+import Button from "./Button";
+
+function ModalFormAddEdit({
+  handleChange,
+  handleSubmit,
+  category,
+  edit,
+  input,
+}) {
   return (
     <>
       <div className="modal-dialog">
@@ -92,13 +100,17 @@ function ModalFormAddEdit({ handleChange, handleSubmit, category, edit, input })
                   className="form-select"
                   name="categoryId"
                   id="floatingSelect"
+                  value={input.categoryId}
                   onChange={handleChange}
                   aria-label="Floating label select example"
                 >
                   <option value="">Open this select Category</option>
-                  {category.map((item, index) => {
+                  {category && category.map((item, index) => {
                     return (
-                      <option defaultValue={input.categoryId === item.id} key={index} value={item.id}>
+                      <option
+                        key={index}
+                        value={item.id}
+                      >
                         {item.name}
                       </option>
                     );
@@ -106,14 +118,7 @@ function ModalFormAddEdit({ handleChange, handleSubmit, category, edit, input })
                 </select>
                 <label htmlFor="floatingSelect">Select Cuisine Category</label>
               </div>
-              <button
-                type="submit"
-                className="btn btn-primary mt-3"
-                style={{marginLeft:"220px"}}
-                data-bs-dismiss="modal"
-              >
-                Submit Add
-              </button>
+              <Button ButtonType={"Submit"} />
             </form>
           </div>
           <div className="modal-footer">

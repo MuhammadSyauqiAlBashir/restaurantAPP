@@ -78,7 +78,6 @@ function Home() {
       });
     }
   };
-  const [data1, setData1] = useState([]);
   async function FetchDataEdit() {
     try {
       const { data } = await axios({
@@ -196,7 +195,14 @@ function Home() {
           className="btn btn-secondary mb-4"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
-          onClick={() => clearEdit()}
+          onClick={() => {
+            clearEdit()
+            setInput({name: "",
+            description: "",
+            price: "",
+            imgUrl: "",
+            categoryId: "",})
+          }}
         >
           Add Cuisine
         </button>
