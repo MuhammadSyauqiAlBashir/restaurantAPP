@@ -4,11 +4,11 @@ import {
   redirect,
   RouterProvider,
 } from "react-router-dom";
-import Login from './assets/login';
-import Home from './assets/Home';
-import MainLayout from './assets/MainLayout';
-import Category from './assets/Category';
-import AddUser from './assets/AddUser';
+import Login from './views/login';
+import Home from './views/Home';
+import MainLayout from './components/MainLayout';
+import Category from './views/Category';
+import AddUser from './views/AddUser';
 
 
 function App() {

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import BASE_URL from "../constant";
 import Swal from "sweetalert2";
 import { redirect, useNavigate } from "react-router-dom";
-import ModalFormAddEdit from "./ModalFormAddEdit";
-import PatchDataImage from "./ModalPatchImage";
+import ModalFormAddEdit from "../components/ModalFormAddEdit";
+import PatchDataImage from "../components/ModalPatchImage";
 
 function Home() {
   const navigate = useNavigate();
@@ -71,11 +71,19 @@ function Home() {
         imgUrl: "",
         categoryId: "",
       });
+      FetchData()
     } catch (error) {
-      Swal.fire({
-        title: error.response.data[0  ],
-        icon: "error",
-      });
+      console.log(error);
+      if(error.response.data.message){
+        Swal.fire({
+          title : error.response.data.message
+        })
+      }else{
+        Swal.fire({
+          title: error.response.data[0],
+          icon: "error",
+        });
+      }
     }
   };
   async function FetchDataEdit() {
@@ -169,11 +177,15 @@ function Home() {
         },
         data: formData,
       });
+      if(!data) throw error.response.data.message = "Please input file" 
     } catch (error) {
       console.log(error);
+      Swal.fire({
+        title: error.response.data.message,
+        icon: "error"
+      })
     } finally {
       setLoading(false);
-      FetchData();
     }
   };
   if (loading) {
@@ -267,6 +279,7 @@ function Home() {
                       data-bs-target="#staticBackdrop"
                       onClick={() => {
                         setEdit(item.id);
+                        if(edit !== 0) FetchDataEdit()
                       }}
                     >
                       Edit

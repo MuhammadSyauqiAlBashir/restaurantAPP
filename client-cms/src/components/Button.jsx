@@ -1,4 +1,4 @@
-function Button({ ButtonType }) {
+function Button({ ButtonType, onClick }) {
   return (
     <button
       type="submit"

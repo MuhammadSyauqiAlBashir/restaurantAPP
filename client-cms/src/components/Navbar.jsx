@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ function Navbar() {
           </ul>
         </div>
         <div className="d-flex mt-5 justify-content-center top-50 start-100 translate-middle">
-          <button
+        <button
             className="btn btn-secondary"
             onClick={handleLogout}
             style={{ height: 50}}

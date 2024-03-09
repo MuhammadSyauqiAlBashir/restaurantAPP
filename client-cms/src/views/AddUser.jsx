@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import BASE_URL from "../constant";
 import Swal from "sweetalert2";
 import { redirect, useNavigate } from "react-router-dom";
-import Button from "./Button";
+import Button from "../components/Button";
 
 function AddUser() {
   const navigate = useNavigate();
