@@ -18,8 +18,8 @@ function DetailCuisine() {
     FetchData();
   }, []);
   return (
-    <div className="card mb-3">
-      <img src={data.imgUrl} className="card-img-top" alt="" />
+    <div className="card mt-4 mb-3 position-absolute top-50 start-50 translate-middle" style={{width:600}}>
+      <img src={data.imgUrl} className="card-img-top" style={{height:400}} />
       <div className="card-body">
         <h5 className="card-title">{data.name}</h5>
         <p className="card-text">

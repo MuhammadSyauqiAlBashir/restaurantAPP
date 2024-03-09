@@ -40,7 +40,7 @@ function AddUser() {
       navigate("/");
     } catch (error) {
       Swal.fire({
-        title: error.response.data.message,
+        title: error.response.data[0],
         icon: "error",
       });
     }
@@ -48,67 +48,70 @@ function AddUser() {
   useEffect(() => {}, []);
   return (
     <>
-      <form onSubmit={submitData}>
-        <div className="row mb-3">
-          <label htmlFor="inputEmail3" className="col-sm-3 col-form-label">
-            Email
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="text"
-              name="email"
-              className="form-control"
-              id="inputEmail3"
-              onChange={handleChange}
-            />
+      <div className="text-light position-absolute top-50 start-50 translate-middle" style={{backgroundColor: "rgba(115, 115, 115, 0.5)", height:500, width:900}}>
+        <form onSubmit={submitData} style={{width:500}} className="position-absolute top-50 start-50 translate-middle">
+          <h1 style={{marginLeft:35}}className="mb-4">Add Staff (Admin Only)</h1>
+          <div className="row mb-3">
+            <label htmlFor="inputEmail3" className="col-sm-3 col-form-label">
+              Email
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="text"
+                name="email"
+                className="form-control"
+                id="inputEmail3"
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row mb-3">
-          <label htmlFor="inputPassword3" className="col-sm-3 col-form-label">
-            Passowrd
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="password"
-              className="form-control"
-              id="inputPassword3"
-              name="password"
-              onChange={handleChange}
-            />
+          <div className="row mb-3">
+            <label htmlFor="inputPassword3" className="col-sm-3 col-form-label">
+              Passowrd
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="password"
+                className="form-control"
+                id="inputPassword3"
+                name="password"
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row mb-3">
-          <label htmlFor="inputPassword2" className="col-sm-3 col-form-label">
-            Phone Number
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="text"
-              className="form-control"
-              id="inputPassword2"
-              name="phoneNumber"
-              onChange={handleChange}
-            />
+          <div className="row mb-3">
+            <label htmlFor="inputPassword2" className="col-sm-3 col-form-label">
+              Phone Number
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="text"
+                className="form-control"
+                id="inputPassword2"
+                name="phoneNumber"
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="row mb-3">
-          <label htmlFor="inputPassword5" className="col-sm-3 col-form-label">
-            Adress
-          </label>
-          <div className="col-sm-9">
-            <input
-              type="text"
-              className="form-control"
-              id="inputPassword5"
-              name="address"
-              onChange={handleChange}
-            />
+          <div className="row mb-3">
+            <label htmlFor="inputPassword5" className="col-sm-3 col-form-label">
+              Adress
+            </label>
+            <div className="col-sm-9">
+              <input
+                type="text"
+                className="form-control"
+                id="inputPassword5"
+                name="address"
+                onChange={handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import Card from "../components/card";
 import Carousel from "../components/carousel";
-import Navbar from "../components/navbar";
+import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import BASE_URL from "../constant";
@@ -16,7 +16,6 @@ function PubCuisine() {
   }
   function handleInputSort(event) {
     const { value } = event.target;
-    console.log({value})
     sort(value);
   }
   function handleInputFilter(event) {
@@ -72,7 +71,7 @@ function PubCuisine() {
   }, [params]);
   return (
     <>
-      <Navbar FetchData={FetchData} />
+      <Navbar />
       <div className="my-5">
         <Carousel />
         <div className="my-5">
@@ -94,7 +93,7 @@ function PubCuisine() {
             </div>
             <div
               className="input-group p-3 mb-4"
-              style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}
+              style={{ backgroundColor: "rgba(115, 115, 115, 0.5)" }}
             >
               <SearchBar handleInputChange={handleInputChange} />
               <div className="form-floating mb-3">

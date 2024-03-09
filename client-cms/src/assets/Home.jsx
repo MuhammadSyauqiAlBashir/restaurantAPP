@@ -191,9 +191,9 @@ function Home() {
     <>
       <div className="container d-flex flex-column" style={{marginLeft:210, marginTop:100}}>
         <button
-          style={{ width: 200}}
+          style={{ width: 250}}
           type="button"
-          className="btn btn-primary mb-4"
+          className="btn btn-secondary mb-4"
           data-bs-toggle="modal"
           data-bs-target="#staticBackdrop"
           onClick={() => clearEdit()}
